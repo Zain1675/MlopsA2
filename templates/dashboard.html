@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+    <h1>Latest Row of Alpha Vantage data</h1>
+    <table class="my-table">
+        <thead>
+          <tr>
+            {% for col in first_row.keys() %}
+            <th>{{ col }}</th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            {% for value in first_row.values() %}
+            <td>{{ value }}</td>
+            {% endfor %}
+          </tr>
+        </tbody>
+      </table>
+      
+
+    <h1>Machine Learning Dashboard</h1>
+    <p>Mean Squared Error: {{ Mean_Squared_Error }}</p>
+    <p>Root Mean Squared Error: {{ Root_Mean_Squared_Error }}</p>
+    <p>Mean Absolute Error: {{ Mean_Absolute_Error }}</p>
+    <p>R squared: {{ R_squared }}</p>
+    
+      
+  </body>
+</html>
