@@ -4,11 +4,13 @@ import requests
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, classification_report
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 
 app = Flask(__name__)
 
 # Load the dataset
-#df = pd.read_csv('heart_failure_clinical_records_dataset.csv')
+
 api_key = "YOUR_API_KEY"
 
 # Define the URL for the API request
@@ -24,12 +26,12 @@ df["target"] = df["4. close"].shift(-1)
 X = df.iloc[:-1, :-1]
 y = df.iloc[:-1, -1]
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-from sklearn.linear_model import LinearRegression
+
 
 model = LinearRegression()
 model.fit(X_train, y_train)
 
-from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+
 
 # Make predictions on the testing data
 y_pred = model.predict(X_test)
